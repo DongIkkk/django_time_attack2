@@ -12,9 +12,7 @@ class ArticleView(APIView):
 
     def post(self, request):
         serializer = ArticleSerializer(data=request.data)
-        print(serializer)
         if serializer.is_valid():
-            print(serializer)
             serializer.save(author=request.user)
             return Response(serializer.data)
         else:
